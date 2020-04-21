@@ -11,7 +11,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class TableComponent implements OnInit {
   dataSource: MatTableDataSource<IBeer>;
-  
+
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private dataService: DataService) {}
@@ -26,15 +26,16 @@ export class TableComponent implements OnInit {
   ];
 
   async ngOnInit() {
-    
     const data = await this.dataService.getDataBeers();
     this.dataSource = new MatTableDataSource(data);
 
     this.dataSource.sort = this.sort;
-    this.sort.direction = "asc";
+    this.sort.direction = 'asc';
     this.sort.active = this.displayedColumns[0];
+  }
 
-    
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   async getTableBeers() {
