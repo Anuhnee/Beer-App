@@ -11,6 +11,6 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
  async get(){
-  return this.httpClient.get<IBeer>(this.BEER_URL).toPromise();
+  return await this.httpClient.get<IBeer[]>(this.BEER_URL).toPromise();
  }
 }

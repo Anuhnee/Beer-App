@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService){}
 
  async ngOnInit() {
-    this.message = JSON.stringify(await this.dataService.getBeers());
+    this.message = JSON.stringify(await this.dataService.getDataBeers());
   }
 }

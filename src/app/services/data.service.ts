@@ -9,7 +9,7 @@ export class DataService {
 
   constructor(private apiService: ApiService) { }
 
-  async getBeers(){
+  async getDataBeers(){
     return await this.apiService.get();
   }
 }

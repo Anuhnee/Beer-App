@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {IBeer} from "../interfaces/ibeer"
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-table',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  
+  dataSource: MatTableDataSource<IBeer>;
 
-  ngOnInit(): void {
+  constructor(private dataService: DataService) { }
+
+  displayedColumns: string[] = ["id", "name", "tag"];
+
+  async ngOnInit(){
+    const data = await this.dataService.getDataBeers()
+    this.dataSource = new MatTableDataSource(data);
+  }
+
+  async getTableBeers(){
+    return await this.dataService.getDataBeers();
+
   }
 
 }
