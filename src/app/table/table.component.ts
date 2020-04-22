@@ -20,6 +20,7 @@ export class TableComponent implements OnInit {
     'id',
     'name',
     'description',
+    'image_url',
     'abv',
     'ibu',
     'tag',
