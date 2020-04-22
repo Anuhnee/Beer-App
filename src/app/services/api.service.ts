@@ -13,4 +13,8 @@ export class ApiService {
  async get(){
   return await this.httpClient.get<IBeer[]>(this.BEER_URL).toPromise();
  }
+
+ async getCount(path){
+   return await this.httpClient.get<IBeer[]>(this.BEER_URL+path).toPromise();
+ }
 }

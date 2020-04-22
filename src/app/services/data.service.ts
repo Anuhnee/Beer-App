@@ -8,8 +8,13 @@ import { ApiService } from './api.service';
 export class DataService {
 
   constructor(private apiService: ApiService) { }
+   
 
   async getDataBeers(){
     return await this.apiService.get();
+  }
+
+  async getDataCount(count){
+    return await this.apiService.getCount('?per_page='+count);
   }
 }
